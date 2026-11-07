@@ -1,0 +1,116 @@
+# 08 — WinRecon.ps1 Build Process
+# By 0xredlog | Month 3 Revision
+
+---
+
+## What is WinRecon.ps1?
+
+A PowerShell recon script that:
+- Runs automatically on a Windows machine
+- Collects 7 sections of system information
+- Saves everything to a timestamped file
+- Shows progress on screen with colors
+- Leaves a clean output file for analysis
+
+---
+
+## The 7 Sections
+
+1. System Info (whoami)
+2. Local Users (Get-LocalUser)
+3. Local Groups (Get-LocalGroup)
+4. Processes (Get-Process)
+5. Running Services (Get-Service | Where-Object Running)
+6. Network Connections (Get-NetTCPConnection)
+7. Local Admins (Get-LocalGroupMember -Group "Administrators")
+
+---
+
+## The Pattern (apply to every section)
+
+```powershell
+Write-Host "[*] Collecting <section>..." -ForegroundColor Green  # Screen
+Write-Output "=== <SECTION> ===" | Out-File -Append $filename     # Header to file
+<command> | Out-File -Append $filename                             # Data to file
+```
+
+---
+
+## Full Script
+
+```powershell
+# WinRecon.ps1
+# By 0xredlog
+# Windows Enumeration Script
+
+$filename = "WinRecon_$(Get-Date -Format 'yyyy-MM-dd').txt"
+
+Write-Host "[*] Collecting System Info..." -ForegroundColor Green
+Write-Output "=== SYSTEM INFO ===" | Out-File -Append $filename
+whoami | Out-File -Append $filename
+
+Write-Host "[*] Collecting Local Users..." -ForegroundColor Green
+Write-Output "=== USERS ===" | Out-File -Append $filename
+Get-LocalUser | Out-File -Append $filename
+
+Write-Host "[*] Collecting Local Groups..." -ForegroundColor Green
+Write-Output "=== GROUPS ===" | Out-File -Append $filename
+Get-LocalGroup | Out-File -Append $filename
+
+Write-Host "[*] Collecting Processes..." -ForegroundColor Green
+Write-Output "=== PROCESSES ===" | Out-File -Append $filename
+Get-Process | Out-File -Append $filename
+
+Write-Host "[*] Collecting Running Services..." -ForegroundColor Green
+Write-Output "=== SERVICES ===" | Out-File -Append $filename
+Get-Service | Where-Object {$_.Status -eq "Running"} | Out-File -Append $filename
+
+Write-Host "[*] Collecting TCP Connections..." -ForegroundColor Green
+Write-Output "=== NETWORK ===" | Out-File -Append $filename
+Get-NetTCPConnection | Out-File -Append $filename
+
+Write-Host "[*] Collecting Local Admins..." -ForegroundColor Green
+Write-Output "=== LOCAL ADMINS ===" | Out-File -Append $filename
+Get-LocalGroupMember -Group "Administrators" | Out-File -Append $filename
+
+Write-Host "[+] Done - saved to $filename" -ForegroundColor Cyan
+```
+
+---
+
+## Key Decisions Made
+
+| Decision | Reason |
+|---|---|
+| -Append on Out-File | Don't overwrite — add to same file |
+| Timestamped filename | Each run creates a new file |
+| Write-Host for screen | Colors + screen feedback only |
+| Write-Output for headers | Goes to pipeline → into file |
+| Where-Object Running on services | Only show active services — reduce noise |
+| -ForegroundColor Green | Professional status color |
+| Cyan for Done message | Visually different from section colors |
+
+---
+
+## How to Run
+
+```powershell
+# 1. Bypass ExecutionPolicy for this session
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process
+
+# 2. Run the script
+.\WinRecon.ps1
+
+# 3. Read the output
+cat .\WinRecon_2026-11-07.txt
+```
+
+---
+
+## Quick Quiz
+
+1. Why use -Append instead of just Out-File?
+2. What is the difference between Write-Host and Write-Output in this script?
+3. How does the timestamped filename work?
+4. Why filter services to Running only?
+5. What command do you run before the script to avoid ExecutionPolicy errors?

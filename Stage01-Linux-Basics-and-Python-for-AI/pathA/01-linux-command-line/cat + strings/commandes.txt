@@ -1,0 +1,17 @@
+cat = plain text files
+
+strings = binary files
+
+"binary file matches" error = use strings instead of cat
+
+strings data.txt | grep "keyword" = find readable text in binary
+
+| grep "==" → filter only lines with = signs
+
+strings = cat but for binary files
+cat     = reads plain text files
+strings = extracts readable text from binary/garbage files
+
+ex : 
+string + file name + | grep + "thing" = search and read in the binary text 
+

@@ -1,0 +1,8 @@
+crtl + alt + T    = open terminal 
+crtl + shift + W  = close terminal 
+crtl + -          = decrease terminal text size
+crtl + shift + (+)= increase terminal text size
+crtl + C          = shut down the operation ( like nmap scan )
+crtl + Z          = stope the operation 
+tab               = suggestions 
+crtl + shift + T    = new terminal

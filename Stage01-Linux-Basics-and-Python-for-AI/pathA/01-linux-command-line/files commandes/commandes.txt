@@ -1,0 +1,20 @@
+whatis + command       = what the command do 
+help -- + command      = the command manual 
+echo + text + > + file = type this text in the file 
+echo + text            = type this text in the terminal 
+cp                     = copy the file 
+cat + file             = show the text in the file 
+touche + name the file = create a file 
+rm + file name         = remove a file 
+mkdir + dir name       = make or create a dir 
+rmdir -R + dir name    = remove recursively a dir 
+cat + /etc/file name + > + file name or new file = copy the content from file to file [ but same dir ]
+cp + file name + dir name/ = copy the file to the dir 
+mv + file name + dir/  = move the file to dir
+mv + file name + file name = rename the file to the name you want
+nano + file name       = edit file content
+ 
+if the file name begin with - that make a problem in the terminal so :
+
+rm  + ./-fichier.txt    = force the system to see the file as a file not an argument and remove it 
+cat + ./-fichier.txt    =                                                            and read it

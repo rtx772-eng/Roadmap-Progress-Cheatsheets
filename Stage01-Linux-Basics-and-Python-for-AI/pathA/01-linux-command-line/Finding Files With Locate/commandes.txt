@@ -1,0 +1,1 @@
+locate + file name = find the file and where is located

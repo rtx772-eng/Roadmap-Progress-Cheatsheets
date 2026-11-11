@@ -1,0 +1,4 @@
+cat file.txt | grep "word" = open file AND THEN filter
+find | grep = searching filenames only, not contents
+
+cat + file name + | grep + "name" = open and search this name 

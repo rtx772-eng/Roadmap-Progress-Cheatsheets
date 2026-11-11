@@ -1,0 +1,4 @@
+grep = find and print lines that match patterns
+
+grep "name or word" + /etc/name of the way 
+grep + -i + "name or word" + /etc/name of the way = in all 

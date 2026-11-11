@@ -1,0 +1,32 @@
+# Bandit Level [3]
+
+## Date : [31\05\2026]
+
+## Goal :
+
+[What does this level ask you to find?]
+
+## Commands Used : 
+
+```bash
+[Paste your terminal commands here]
+
+## Solution :
+
+[Explain how you solved it in 1-2 sentences]
+
+## Screenshot : 
+
+https://screenshot.png
+
+## Password :
+
+[the password]
+
+## What I Learned :
+
+[Lesson 1]
+
+[Lesson 2]
+
+[Lesson 3]

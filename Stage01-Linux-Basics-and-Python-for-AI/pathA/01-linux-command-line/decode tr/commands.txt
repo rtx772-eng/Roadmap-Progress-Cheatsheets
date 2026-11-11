@@ -1,0 +1,6 @@
+tr = translate/replace characters
+tr 'list1' 'list2' = replace every character from list1 with matching character from list2
+ROT13 uses tr to swap letters 13 positions
+
+cat | tr = read and replace 
+cat + file name | tr 'list1' 'list2'

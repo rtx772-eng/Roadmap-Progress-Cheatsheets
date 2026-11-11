@@ -1,0 +1,11 @@
+pwd     = current dir you are in 
+ls      = show dir
+ls -l   = with more details and files
+ls -la  = with all dir and files and hidden ones 
+ls -lh  = human read dir shape 
+ls -lR dir[you want] = show what the dir choosen contain 
+cd      = change dir 
+cd ..   = move dir behind 
+cd -    = move dir front 	
+cd [dir not in current dir ]/ = move to a dir not in the current dir
+ls -alh = with more details as file size

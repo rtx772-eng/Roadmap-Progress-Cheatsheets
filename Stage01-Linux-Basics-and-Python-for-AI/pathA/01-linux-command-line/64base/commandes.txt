@@ -1,0 +1,9 @@
+base64 = encode binary data 
+
+base64 commande = encode 
+base64 -d = decode 
+
+
+base64 + cat = to decode and read the file 
+
+cat + name file | base64 -d 

@@ -1,0 +1,30 @@
+find = find the file 
+find + where to find + type of the file + 2>/dev/null | xargs + cat
+
+
+2>/dev/null = throw all the errors away 
+
+xargs = translate to the cat to read that file we find 
+
+-user + name = only in this user 
+
+-size + size file = with this specific size 
+-size + +thefilesize = this size or + 
+-size + -thefilesize = this size or -
+| = AND THEN (pipe — feeds output of one command into next)
+
+xargs = translator that lets cat receive a path from find
+
+-group + groupname = only in this group
+
+! -executable = file is NOT executable
+-readable     = file is human readable
+!             = NOT (reverses any flag)
+
+find inhere ...          # relative - you're already in /home/bandit5/
+find ~/inhere ...        # absolute using home shortcut
+find /home/bandit5/inhere ...   # full absolute path
+
+ex: 
+
+find /etc/ -user kali -size +80c 2>/dev/null | xargs cat 

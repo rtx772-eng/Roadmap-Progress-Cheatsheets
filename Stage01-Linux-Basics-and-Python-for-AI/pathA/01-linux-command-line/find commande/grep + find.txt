@@ -1,0 +1,4 @@
+grep = searches INSIDE a file
+find = searches FOR a file
+grep -r = searches inside ALL files in a directory
+2>/dev/null = send all error away
